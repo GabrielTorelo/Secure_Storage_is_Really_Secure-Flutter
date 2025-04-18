@@ -8,6 +8,10 @@
   "@errorOccurred": {
     "description": "Generic error title"
   },
+  "unknownErrorOccurred": "An unknown error occurred!\nTry again later.",
+  "@unknownErrorOccurred": {
+    "description": "Generic error message"
+  },
   "errorLogin": "Login Error",
   "@errorLogin": {
     "description": "Login error title"
@@ -23,6 +27,10 @@
   "logout": "Logout",
   "@logout": {
     "description": "Logout text"
+  },
+  "backToHome": "Back to Home",
+  "@backToHome": {
+    "description": "Message to return to home"
   },
   "ok": "ok",
   "@ok": {
