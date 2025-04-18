@@ -1,0 +1,35 @@
+name: analysis_web
+description: "The analysis is highlighted in an attempt to bypass data encryption."
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_localizations:
+    sdk: flutter
+
+  flutter_secure_storage: ^9.2.2
+  intl: any
+  localstorage: ^5.0.0
+  provider: ^6.1.2
+  responsive_ui: ^3.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/images/tips/localstorage/accessing_devtools.png
+    - assets/images/tips/localstorage/accessing_localstorage.png
+    - assets/images/tips/users/accessing_users.png
