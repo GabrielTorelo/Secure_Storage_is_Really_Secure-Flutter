@@ -9,6 +9,8 @@ import 'package:analysis_web/helpers/colored_logs.dart';
 import 'package:analysis_web/err/general_exception.dart';
 import 'package:analysis_web/notifiers/auth_notifier.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:analysis_web/controllers/auth_controller.dart';
+import 'package:analysis_web/controllers/home_controller.dart';
 import 'package:analysis_web/screens/auth_or_home_screen.dart';
 import 'package:analysis_web/components/dialog/error_dialog.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -47,6 +49,15 @@ class _MyAppState extends State<MyApp> {
       providers: [
         ChangeNotifierProvider(
           create: (_) => AuthNotifier(),
+        ),
+        Provider<HomeController>(
+          create: (context) => HomeController(),
+        ),
+        Provider<AuthController>(
+          create: (context) => AuthController(
+            authNotifier: context.read<AuthNotifier>(),
+            homeController: context.read<HomeController>(),
+          ),
         ),
       ],
       child: MaterialApp(

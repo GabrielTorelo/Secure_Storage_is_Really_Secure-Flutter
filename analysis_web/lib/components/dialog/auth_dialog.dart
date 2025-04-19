@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:analysis_web/MOCK/users.dart';
 import 'package:analysis_web/models/user.dart';
 import 'package:responsive_ui/responsive_ui.dart';
-import 'package:analysis_web/notifiers/auth_notifier.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:analysis_web/controllers/auth_controller.dart';
 import 'package:analysis_web/components/dialog/tip_dialog.dart';
 
 class AuthDialog extends StatelessWidget {
@@ -13,10 +13,7 @@ class AuthDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
-    final AuthNotifier authNotifier = Provider.of<AuthNotifier>(
-      context,
-      listen: false,
-    );
+    final AuthController authController = Provider.of<AuthController>(context);
 
     return TipDialog(
       title: localizations.usersAvailable,
@@ -75,7 +72,10 @@ class AuthDialog extends StatelessWidget {
                                 color: Colors.green,
                               ),
                               onPressed: () {
-                                setAuthData(authNotifier, user);
+                                _setAuthData(
+                                  authController: authController,
+                                  user: user,
+                                );
 
                                 Navigator.of(context).pop();
                               },
@@ -170,8 +170,11 @@ class AuthDialog extends StatelessWidget {
     );
   }
 
-  void setAuthData(AuthNotifier authNotifier, User user) {
-    authNotifier.usernameController.text = user.username;
-    authNotifier.passwordController.text = user.password;
+  void _setAuthData({
+    required AuthController authController,
+    required User user,
+  }) {
+    authController.usernameController.text = user.username;
+    authController.passwordController.text = user.password;
   }
 }

@@ -1,4 +1,5 @@
 import 'package:analysis_web/components/background_gradient.dart';
+import 'package:analysis_web/controllers/auth_controller.dart';
 import 'package:analysis_web/notifiers/auth_notifier.dart';
 import 'package:analysis_web/screens/auth_screen.dart';
 import 'package:analysis_web/screens/error_screen.dart';
@@ -11,23 +12,27 @@ class AuthOrHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AuthNotifier authNotifier = Provider.of<AuthNotifier>(context);
+    final AuthController authController = Provider.of<AuthController>(context);
 
     return FutureBuilder(
-      future: authNotifier.tryAutoLogin(),
+      future: authController.tryAutoLogin(),
       builder: (ctx, snapshot) {
-        return switch (snapshot.connectionState) {
-          ConnectionState.waiting => Scaffold(
-              body: BackgroundGradient(
-                content: const Center(
-                  child: CircularProgressIndicator(),
+        return Consumer<AuthNotifier>(
+          builder: (ctx, authNotifier, _) {
+            return switch (snapshot.connectionState) {
+              ConnectionState.waiting => Scaffold(
+                  body: BackgroundGradient(
+                    content: const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ConnectionState.done =>
-            authNotifier.isAuth ? const HomeScreen() : const AuthScreen(),
-          _ => const ErrorScreen(),
-        };
+              ConnectionState.done =>
+                authNotifier.isAuth ? const HomeScreen() : const AuthScreen(),
+              _ => const ErrorScreen(),
+            };
+          },
+        );
       },
     );
   }

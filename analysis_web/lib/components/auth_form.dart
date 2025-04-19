@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:analysis_web/models/user.dart';
-import 'package:analysis_web/notifiers/auth_notifier.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:analysis_web/controllers/auth_controller.dart';
 import 'package:analysis_web/components/buttons/default_elevated_button.dart';
 
 class AuthForm extends StatefulWidget {
@@ -32,19 +32,22 @@ class _AuthFormState extends State<AuthForm> {
     super.dispose();
   }
 
-  void _handleLogin({required AuthNotifier notifier, required User user}) {
+  void _handleLogin({
+    required AuthController authController,
+    required User user,
+  }) {
     final isValid = _formKey.currentState?.validate() ?? false;
 
     if (!isValid) {
       return;
     }
 
-    notifier.handleLogin(ctx: context, auth: user);
+    authController.handleLogin(auth: user);
   }
 
   @override
   Widget build(BuildContext context) {
-    final AuthNotifier authNotifier = Provider.of<AuthNotifier>(context);
+    final AuthController authController = Provider.of<AuthController>(context);
     final AppLocalizations localizations = AppLocalizations.of(context)!;
     final deviceSize = MediaQuery.of(context).size;
 
@@ -68,7 +71,7 @@ class _AuthFormState extends State<AuthForm> {
                       labelText: localizations.username,
                     ),
                     keyboardType: TextInputType.name,
-                    controller: authNotifier.usernameController,
+                    controller: authController.usernameController,
                     validator: (value) {
                       return switch (value?.trim()) {
                         '' || null => localizations.pleaseEnterUsername,
@@ -83,7 +86,7 @@ class _AuthFormState extends State<AuthForm> {
                     ),
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: true,
-                    controller: authNotifier.passwordController,
+                    controller: authController.passwordController,
                     validator: (value) {
                       return switch (value?.trim()) {
                         '' || null => localizations.pleaseEnterPassword,
@@ -95,14 +98,16 @@ class _AuthFormState extends State<AuthForm> {
                     padding: const EdgeInsets.symmetric(
                       vertical: 20,
                     ),
-                    child: authNotifier.isLoading
+                    child: authController.authNotifier.isLoading
                         ? const CircularProgressIndicator()
                         : DefaultElevatedButton(
                             onPressed: () => _handleLogin(
-                              notifier: authNotifier,
+                              authController: authController,
                               user: User(
-                                username: authNotifier.usernameController.text,
-                                password: authNotifier.passwordController.text,
+                                username:
+                                    authController.usernameController.text,
+                                password:
+                                    authController.passwordController.text,
                               ),
                             ),
                             text: localizations.login.toUpperCase(),
