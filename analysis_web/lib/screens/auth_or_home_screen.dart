@@ -1,5 +1,5 @@
 import 'package:analysis_web/components/background_gradient.dart';
-import 'package:analysis_web/notifier/auth_notifier.dart';
+import 'package:analysis_web/notifiers/auth_notifier.dart';
 import 'package:analysis_web/screens/auth_screen.dart';
 import 'package:analysis_web/screens/error_screen.dart';
 import 'package:analysis_web/screens/home_screen.dart';

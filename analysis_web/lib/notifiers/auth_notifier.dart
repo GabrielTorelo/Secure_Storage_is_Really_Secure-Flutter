@@ -12,7 +12,10 @@ class AuthNotifier with ChangeNotifier {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _keyController = TextEditingController();
-  final TextEditingController _userDataController = TextEditingController();
+  final TextEditingController _encryptUserDataController =
+      TextEditingController();
+  final TextEditingController _decryptUserDataController =
+      TextEditingController();
   User _user = User();
   bool _isLoading = false;
   bool _isAuth = false;
@@ -30,7 +33,10 @@ class AuthNotifier with ChangeNotifier {
   TextEditingController get usernameController => _usernameController;
   TextEditingController get passwordController => _passwordController;
   TextEditingController get keyController => _keyController;
-  TextEditingController get userDataController => _userDataController;
+  TextEditingController get encryptUserDataController =>
+      _encryptUserDataController;
+  TextEditingController get decryptUserDataController =>
+      _decryptUserDataController;
   User get user => _user;
   bool get isLoading => _isLoading;
   bool get isAuth => _isAuth;
@@ -121,7 +127,7 @@ class AuthNotifier with ChangeNotifier {
     final LocalStorage localStorage = LocalStorage();
 
     _keyController.text = await localStorage.read(key: 'FlutterSecureStorage');
-    _userDataController.text = await localStorage.read(
+    _encryptUserDataController.text = await localStorage.read(
       key: 'FlutterSecureStorage.userData',
     );
   }

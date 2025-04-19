@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:analysis_web/models/user.dart';
-import 'package:analysis_web/notifier/auth_notifier.dart';
+import 'package:analysis_web/notifiers/auth_notifier.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:analysis_web/components/buttons/default_elevated_button.dart';
 

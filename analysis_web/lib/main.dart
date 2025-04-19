@@ -7,7 +7,7 @@ import 'package:analysis_web/screens/home_screen.dart';
 import 'package:analysis_web/screens/auth_screen.dart';
 import 'package:analysis_web/helpers/colored_logs.dart';
 import 'package:analysis_web/err/general_exception.dart';
-import 'package:analysis_web/notifier/auth_notifier.dart';
+import 'package:analysis_web/notifiers/auth_notifier.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:analysis_web/screens/auth_or_home_screen.dart';
 import 'package:analysis_web/components/dialog/error_dialog.dart';
