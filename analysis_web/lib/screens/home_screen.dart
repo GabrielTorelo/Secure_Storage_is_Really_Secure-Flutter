@@ -127,17 +127,25 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Theme.of(context).colorScheme.secondary,
                         ),
                       ),
-                      IconButton(
-                        icon: Icon(
-                          Icons.help,
-                          color: Theme.of(context)
-                              .colorScheme
-                              .secondary
-                              .withValues(alpha: 0.5),
-                        ),
-                        onPressed: () => showDialog(
-                          context: context,
-                          builder: (_) => HomeDialog(),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Tooltip(
+                          message:
+                              AppLocalizations.of(context)!.whereAccessInfo,
+                          waitDuration: Duration(milliseconds: 300),
+                          child: IconButton(
+                            icon: Icon(
+                              Icons.help,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .secondary
+                                  .withValues(alpha: 0.5),
+                            ),
+                            onPressed: () => showDialog(
+                              context: context,
+                              builder: (_) => HomeDialog(),
+                            ),
+                          ),
                         ),
                       ),
                     ],

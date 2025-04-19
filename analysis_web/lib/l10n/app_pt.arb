@@ -92,6 +92,10 @@
   "@textCopied": {
     "description": "Mensagem de texto copiado"
   },
+  "whereAccessInfo": "Onde acessar essa informação?",
+  "@whereAccessInfo": {
+    "description": "Mensagem perguntando onde acessar essa informação"
+  },
   "encryptionKey": "Chave de Criptografia",
   "@encryptionKey": {
     "description": "Texto do campo que contém a chave de criptografia"

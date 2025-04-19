@@ -92,6 +92,10 @@
   "@textCopied": {
     "description": "Copied text message"
   },
+  "whereAccessInfo": "Where to access this information?",
+  "@whereAccessInfo": {
+    "description": "Message asking where to access this information"
+  },
   "encryptionKey": "Encryption Key",
   "@encryptionKey": {
     "description": "Text of the field containing the encryption key"
