@@ -27,7 +27,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  generate: false
+  generate: true
 
   assets:
     - assets/images/tips/localstorage/accessing_devtools.png
