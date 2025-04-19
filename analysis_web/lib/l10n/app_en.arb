@@ -96,6 +96,10 @@
   "@whereAccessInfo": {
     "description": "Message asking where to access this information"
   },
+  "decrypt": "Decrypt",
+  "@decrypt": {
+    "description": "Message to decrypt something"
+  },
   "encryptionKey": "Encryption Key",
   "@encryptionKey": {
     "description": "Text of the field containing the encryption key"

@@ -1,9 +1,9 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:analysis_web/components/auth_form.dart';
+import 'package:analysis_web/l10n/app_localizations.dart';
 import 'package:analysis_web/components/dialog/auth_dialog.dart';
 import 'package:analysis_web/components/background_gradient.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:analysis_web/components/buttons/default_elevated_button.dart';
 
 class AuthScreen extends StatelessWidget {

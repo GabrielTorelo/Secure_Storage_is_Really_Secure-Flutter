@@ -5,7 +5,7 @@ import 'package:analysis_web/models/user.dart';
 import 'package:analysis_web/data/secure_storage.dart';
 import 'package:analysis_web/err/login_exception.dart';
 import 'package:analysis_web/notifiers/auth_notifier.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:analysis_web/l10n/app_localizations.dart';
 
 class AuthController {
   final AuthNotifier authNotifier;

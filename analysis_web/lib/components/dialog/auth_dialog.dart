@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:analysis_web/MOCK/users.dart';
 import 'package:analysis_web/models/user.dart';
 import 'package:responsive_ui/responsive_ui.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:analysis_web/l10n/app_localizations.dart';
 import 'package:analysis_web/controllers/auth_controller.dart';
 import 'package:analysis_web/components/dialog/tip_dialog.dart';
 

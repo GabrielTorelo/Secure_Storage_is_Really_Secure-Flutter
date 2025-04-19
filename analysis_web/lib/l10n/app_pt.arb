@@ -96,6 +96,10 @@
   "@whereAccessInfo": {
     "description": "Mensagem perguntando onde acessar essa informação"
   },
+  "decrypt": "Descriptografar",
+  "@decrypt": {
+    "description": "Mensagem para descriptografar alguma coisa"
+  },
   "encryptionKey": "Chave de Criptografia",
   "@encryptionKey": {
     "description": "Texto do campo que contém a chave de criptografia"

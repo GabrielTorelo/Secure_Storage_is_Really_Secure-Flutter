@@ -1,5 +1,5 @@
 import 'package:analysis_web/err/general_exception.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:analysis_web/l10n/app_localizations.dart';
 
 class LoginException extends GeneralException {
   LoginException({
