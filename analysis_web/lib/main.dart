@@ -56,7 +56,6 @@ class _MyAppState extends State<MyApp> {
         Provider<AuthController>(
           create: (context) => AuthController(
             authNotifier: context.read<AuthNotifier>(),
-            homeController: context.read<HomeController>(),
           ),
         ),
       ],
