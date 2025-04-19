@@ -36,6 +36,10 @@
   "@ok": {
     "description": "Texto de ok"
   },
+  "unavailable": "Indisponível",
+  "@unavailable": {
+    "description": "Texto de indisponível"
+  },
   "copy": "Copiar",
   "@copy": {
     "description": "Texto de copiar"
@@ -107,6 +111,10 @@
   "encryptedUserData": "Dados do Usuário Criptografados",
   "@encryptedUserData": {
     "description": "Texto do campo que contém os dados do usuário criptografados"
+  },
+  "decryptedUserData": "Dados do Usuário Descriptografados",
+  "@decryptedUserData": {
+    "description": "Texto do campo que contém os dados do usuário descriptografados"
   },
   "savedLocalStorage": "Seus dados foram salvos em 'Armazenamento Local' usando o pacote 'flutter_secure_storage'",
   "@savedLocalStorage": {

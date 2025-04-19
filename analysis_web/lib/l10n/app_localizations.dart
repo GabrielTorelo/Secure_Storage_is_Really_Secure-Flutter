@@ -149,6 +149,12 @@ abstract class AppLocalizations {
   /// **'ok'**
   String get ok;
 
+  /// Unavailable text
+  ///
+  /// In en, this message translates to:
+  /// **'Unavailable'**
+  String get unavailable;
+
   /// Copy text
   ///
   /// In en, this message translates to:
@@ -256,6 +262,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Encrypted User Data'**
   String get encryptedUserData;
+
+  /// Text of the field containing the decrypted user data
+  ///
+  /// In en, this message translates to:
+  /// **'Decrypted User Data'**
+  String get decryptedUserData;
 
   /// Message to indicate that data has been saved in 'LocalStorage'
   ///

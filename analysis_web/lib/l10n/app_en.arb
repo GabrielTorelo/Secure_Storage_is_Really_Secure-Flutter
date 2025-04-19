@@ -36,6 +36,10 @@
   "@ok": {
     "description": "Ok text"
   },
+  "unavailable": "Unavailable",
+  "@unavailable": {
+    "description": "Unavailable text"
+  },
   "copy": "Copy",
   "@copy": {
     "description": "Copy text"
@@ -107,6 +111,10 @@
   "encryptedUserData": "Encrypted User Data",
   "@encryptedUserData": {
     "description": "Text of the field containing the encrypted user data"
+  },
+  "decryptedUserData": "Decrypted User Data",
+  "@decryptedUserData": {
+    "description": "Text of the field containing the decrypted user data"
   },
   "savedLocalStorage": "Your data has been saved in 'Local Storage' using the 'flutter_secure_storage' package",
   "@savedLocalStorage": {

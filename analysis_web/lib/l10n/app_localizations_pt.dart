@@ -36,6 +36,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get ok => 'ok';
 
   @override
+  String get unavailable => 'Indisponível';
+
+  @override
   String get copy => 'Copiar';
 
   @override
@@ -88,6 +91,9 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get encryptedUserData => 'Dados do Usuário Criptografados';
+
+  @override
+  String get decryptedUserData => 'Dados do Usuário Descriptografados';
 
   @override
   String get savedLocalStorage => 'Seus dados foram salvos em \'Armazenamento Local\' usando o pacote \'flutter_secure_storage\'';
