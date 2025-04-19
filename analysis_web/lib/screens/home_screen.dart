@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Navigator.of(context).pushReplacementNamed(
               AppRoutes.authOrHome,
             );
-            authController.logout();
+            _homeController.logout(authController);
           },
           text: localizations.logout,
           withoutBorderRadius: true,
