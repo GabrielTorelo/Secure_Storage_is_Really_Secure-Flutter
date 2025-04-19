@@ -1,13 +1,15 @@
-import 'package:analysis_web/components/buttons/default_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_ui/responsive_ui.dart';
 import 'package:analysis_web/routes/app_routes.dart';
 import 'package:analysis_web/helpers/text_handler.dart';
-import 'package:analysis_web/notifier/auth_notifier.dart';
+import 'package:analysis_web/l10n/app_localizations.dart';
+import 'package:analysis_web/notifiers/home_notifier.dart';
+import 'package:analysis_web/controllers/auth_controller.dart';
+import 'package:analysis_web/controllers/home_controller.dart';
 import 'package:analysis_web/components/dialog/home_dialog.dart';
 import 'package:analysis_web/components/background_gradient.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:responsive_ui/responsive_ui.dart';
+import 'package:analysis_web/components/buttons/default_elevated_button.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,10 +19,19 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late final HomeController _homeController;
+
+  @override
+  void initState() {
+    super.initState();
+    _homeController = Provider.of<HomeController>(context, listen: false);
+    _homeController.getUserDataFromLocalStorage();
+  }
+
   @override
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
-    final AuthNotifier authNotifier = Provider.of<AuthNotifier>(context);
+    final AuthController authController = Provider.of<AuthController>(context);
 
     return Scaffold(
       body: BackgroundGradient(
@@ -29,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Navigator.of(context).pushReplacementNamed(
               AppRoutes.authOrHome,
             );
-            authNotifier.logout();
+            authController.logout();
           },
           text: localizations.logout,
           withoutBorderRadius: true,
@@ -52,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   Text(
-                    ' ${authNotifier.user.name} ',
+                    ' ${authController.authNotifier.user.name} ',
                     style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
@@ -69,30 +80,47 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Text(
-                  localizations.savedLocalStorage,
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Theme.of(context).colorScheme.tertiary.withValues(
-                          alpha: 0.9,
-                        ),
-                  ),
-                  textAlign: TextAlign.center,
+              Text(
+                localizations.savedLocalStorage,
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Theme.of(context).colorScheme.tertiary.withValues(
+                        alpha: 0.9,
+                      ),
                 ),
+                textAlign: TextAlign.center,
               ),
-              Responsive(
-                children: [
-                  _buildTextField(
-                    title: localizations.encryptionKey,
-                    controller: authNotifier.keyController,
-                  ),
-                  _buildTextField(
-                    title: localizations.encryptedUserData,
-                    controller: authNotifier.userDataController,
-                  ),
-                ],
+              Consumer<HomeNotifier>(
+                builder: (ctx, homeNotifier, _) {
+                  return Responsive(
+                    children: [
+                      _buildTextField(
+                        title: localizations.encryptionKey,
+                        controller: _homeController.keyController,
+                      ),
+                      _buildTextField(
+                        title: localizations.encryptedUserData,
+                        controller: _homeController.encryptUserDataController,
+                      ),
+                      Center(
+                        child: homeNotifier.displayDecrypted
+                            ? _buildTextField(
+                                title: localizations.decryptedUserData,
+                                controller:
+                                    _homeController.decryptUserDataController,
+                              )
+                            : Padding(
+                                padding: const EdgeInsets.only(top: 20),
+                                child: DefaultElevatedButton(
+                                  onPressed: () =>
+                                      _homeController.decryptUserData(),
+                                  text: localizations.decrypt,
+                                ),
+                              ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ],
           ),
@@ -111,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
         colS: 12,
       ),
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -152,27 +180,28 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
-                  Consumer<AuthNotifier>(
-                    builder: (ctx, authNotifier, _) {
-                      return TextField(
-                        controller: controller,
-                        enabled: false,
-                        maxLines: null,
-                        decoration: InputDecoration(
-                          hintText: 'SecureStorage - $title',
-                          border: OutlineInputBorder(),
-                          fillColor: Theme.of(context).colorScheme.tertiary,
-                          filled: true,
-                        ),
-                      );
-                    },
+                  TextField(
+                    controller: controller,
+                    enabled: false,
+                    maxLines: null,
+                    decoration: InputDecoration(
+                      hintText: 'SecureStorage - $title',
+                      border: OutlineInputBorder(),
+                      fillColor: Theme.of(context).colorScheme.tertiary,
+                      filled: true,
+                    ),
                   ),
                 ],
               ),
             ),
-            Consumer<AuthNotifier>(
-              builder: (ctx, authNotifier, _) {
-                return IconButton(
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Tooltip(
+                message: controller.text.isEmpty
+                    ? '${AppLocalizations.of(context)!.copy} ${AppLocalizations.of(context)!.unavailable.toLowerCase()}'
+                    : AppLocalizations.of(context)!.copy,
+                waitDuration: Duration(milliseconds: 300),
+                child: IconButton(
                   icon: Icon(
                     Icons.copy,
                     color: controller.text.isEmpty
@@ -184,8 +213,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       : () => TextHandler.of(context).copyToClipboard(
                             text: controller.text,
                           ),
-                );
-              },
+                ),
+              ),
             ),
           ],
         ),
