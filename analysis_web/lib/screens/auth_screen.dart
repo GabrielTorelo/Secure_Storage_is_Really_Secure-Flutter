@@ -4,6 +4,7 @@ import 'package:analysis_web/components/auth_form.dart';
 import 'package:analysis_web/components/dialog/auth_dialog.dart';
 import 'package:analysis_web/components/background_gradient.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:analysis_web/components/buttons/default_elevated_button.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
@@ -14,18 +15,16 @@ class AuthScreen extends StatelessWidget {
 
     return Scaffold(
       body: BackgroundGradient(
-        actionButtons: ElevatedButton(
+        actionButtons: DefaultElevatedButton(
           onPressed: () {
             showDialog(
               context: context,
               builder: (_) => AuthDialog(),
             );
           },
-          style: ElevatedButton.styleFrom(
-            backgroundColor:
-                Theme.of(context).colorScheme.onPrimaryFixedVariant,
-          ),
-          child: Text(localizations.users),
+          text: localizations.users,
+          color: Theme.of(context).colorScheme.onPrimaryFixedVariant,
+          withoutBorderRadius: true,
         ),
         content: SizedBox(
           width: double.infinity,

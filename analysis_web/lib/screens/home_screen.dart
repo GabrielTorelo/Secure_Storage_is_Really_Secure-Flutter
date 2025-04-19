@@ -1,3 +1,4 @@
+import 'package:analysis_web/components/buttons/default_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:analysis_web/routes/app_routes.dart';
@@ -23,14 +24,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       body: BackgroundGradient(
-        actionButtons: ElevatedButton(
+        actionButtons: DefaultElevatedButton(
           onPressed: () {
             Navigator.of(context).pushReplacementNamed(
               AppRoutes.authOrHome,
             );
             authNotifier.logout();
           },
-          child: Text(localizations.logout),
+          text: localizations.logout,
+          withoutBorderRadius: true,
         ),
         actionDirection: Direction.right,
         content: SizedBox(

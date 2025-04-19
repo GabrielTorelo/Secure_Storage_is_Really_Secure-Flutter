@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:analysis_web/helpers/text_handler.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:analysis_web/components/buttons/default_elevated_button.dart';
 
 class ErrorDialog extends StatelessWidget {
   final String title;
@@ -48,27 +49,17 @@ class ErrorDialog extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                backgroundColor: Theme.of(context).colorScheme.secondary,
-              ),
+            DefaultElevatedButton(
               onPressed: () => TextHandler.of(context).copyToClipboard(
                 text: message,
                 popAfterCopy: true,
               ),
-              child: Text(localizations.copy.toUpperCase()),
+              text: localizations.copy.toUpperCase(),
+              color: Theme.of(context).colorScheme.secondary,
             ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
+            DefaultElevatedButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text(localizations.ok.toUpperCase()),
+              text: localizations.ok.toUpperCase(),
             ),
           ],
         ),

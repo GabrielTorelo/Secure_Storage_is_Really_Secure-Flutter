@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:analysis_web/components/buttons/default_elevated_button.dart';
 
 class TipDialog extends StatelessWidget {
   final String title;
@@ -24,14 +25,9 @@ class TipDialog extends StatelessWidget {
             ),
           ),
           actions: [
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
+            DefaultElevatedButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text(AppLocalizations.of(context)!.ok.toUpperCase()),
+              text: AppLocalizations.of(context)!.ok.toUpperCase(),
             ),
           ],
         ),

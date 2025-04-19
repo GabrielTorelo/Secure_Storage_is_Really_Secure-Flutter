@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:analysis_web/models/user.dart';
 import 'package:analysis_web/notifier/auth_notifier.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:analysis_web/components/buttons/default_elevated_button.dart';
 
 class AuthForm extends StatefulWidget {
   const AuthForm({super.key});
@@ -96,7 +97,7 @@ class _AuthFormState extends State<AuthForm> {
                     ),
                     child: authNotifier.isLoading
                         ? const CircularProgressIndicator()
-                        : ElevatedButton(
+                        : DefaultElevatedButton(
                             onPressed: () => _handleLogin(
                               notifier: authNotifier,
                               user: User(
@@ -104,19 +105,7 @@ class _AuthFormState extends State<AuthForm> {
                                 password: authNotifier.passwordController.text,
                               ),
                             ),
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 30,
-                                vertical: 8,
-                              ),
-                              backgroundColor:
-                                  Theme.of(context).colorScheme.primary,
-                              foregroundColor: Colors.white,
-                            ),
-                            child: Text(localizations.login.toUpperCase()),
+                            text: localizations.login.toUpperCase(),
                           ),
                   ),
                 ],
