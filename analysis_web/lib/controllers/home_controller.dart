@@ -1,15 +1,14 @@
 import 'dart:convert';
 import 'dart:typed_data';
-import 'dart:html' as html;
-import 'dart:js_util' as js_util;
 import 'package:analysis_web/controllers/auth_controller.dart';
-import 'package:flutter_secure_storage_web/src/subtle.dart' as crypto;
+import 'package:cryptography/cryptography.dart';
 import 'package:analysis_web/data/local_storage.dart';
 import 'package:analysis_web/notifiers/home_notifier.dart';
 import 'package:flutter/material.dart';
 
 class HomeController {
   final HomeNotifier homeNotifier;
+  final AesGcm _algorithm = AesGcm.with256bits();
   final LocalStorage _localStorage = LocalStorage();
 
   final TextEditingController _keyController = TextEditingController();
@@ -58,56 +57,46 @@ class HomeController {
   }
 
   Future<String?> _encryptValue() async {
-    final iv =
-        html.window.crypto!.getRandomValues(Uint8List(12)).buffer.asUint8List();
-    final algorithm = _getAlgorithm(iv);
-    final encryptionKey = await _getEncryptionKey(algorithm);
+    final secretKey = SecretKey(base64Decode(_keyController.text));
+    final nonce = _algorithm.newNonce();
 
-    final encryptedContent = await js_util.promiseToFuture<ByteBuffer>(
-      crypto.encrypt(
-        algorithm,
-        encryptionKey,
-        Uint8List.fromList(
-          utf8.encode(_newEncryptUserDataController.text),
-        ),
-      ),
+    final secretBox = await _algorithm.encrypt(
+      utf8.encode(_newEncryptUserDataController.text),
+      secretKey: secretKey,
+      nonce: nonce,
     );
 
-    return "${base64Encode(iv)}.${base64Encode(encryptedContent.asUint8List())}";
+    final combinedCipher = Uint8List.fromList([
+      ...secretBox.cipherText,
+      ...secretBox.mac.bytes,
+    ]);
+
+    return "${base64Encode(nonce)}.${base64Encode(combinedCipher)}";
   }
 
   Future<String?> _decryptValue() async {
+    const tagLength = 16;
     final parts = _encryptUserDataController.text.split(".");
+    final nonce = base64Decode(parts[0]);
+    final encryptedCombined = base64Decode(parts[1]);
 
-    final iv = base64Decode(parts[0]);
-    final value = base64Decode(parts[1]);
-    final algorithm = _getAlgorithm(iv);
-    final decryptionKey = await _getEncryptionKey(algorithm);
+    if (encryptedCombined.length < tagLength) return null;
 
-    final decryptedContent = await js_util.promiseToFuture<ByteBuffer>(
-      crypto.decrypt(
-        algorithm,
-        decryptionKey,
-        Uint8List.fromList(value),
+    return utf8.decode(
+      await _algorithm.decrypt(
+        SecretBox(
+          encryptedCombined.sublist(0, encryptedCombined.length - tagLength),
+          nonce: nonce,
+          mac: Mac(
+            encryptedCombined.sublist(encryptedCombined.length - tagLength),
+          ),
+        ),
+        secretKey: SecretKey(
+          base64Decode(
+            _keyController.text,
+          ),
+        ),
       ),
-    );
-
-    return utf8.decode(decryptedContent.asUint8List());
-  }
-
-  crypto.Algorithm _getAlgorithm(Uint8List iv) {
-    return crypto.Algorithm(
-      name: 'AES-GCM',
-      length: 256,
-      iv: iv,
-    );
-  }
-
-  Future<html.CryptoKey> _getEncryptionKey(crypto.Algorithm algorithm) async {
-    final jwk = base64Decode(_keyController.text);
-
-    return await js_util.promiseToFuture<html.CryptoKey>(
-      crypto.importKey("raw", jwk, algorithm, false, ["encrypt", "decrypt"]),
     );
   }
 }
