@@ -112,6 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 controller:
                                     _homeController.decryptUserDataController,
                                 withoutCopyButton: true,
+                                withoutHelpButton: true,
                               ),
                               _buildButton(
                                 text: localizations.edit,
@@ -158,6 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
     required String title,
     required TextEditingController controller,
     bool withoutCopyButton = false,
+    bool withoutHelpButton = false,
   }) {
     return Div(
       divison: Division(
@@ -183,27 +185,28 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Theme.of(context).colorScheme.secondary,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Tooltip(
-                          message:
-                              AppLocalizations.of(context)!.whereAccessInfo,
-                          waitDuration: Duration(milliseconds: 300),
-                          child: IconButton(
-                            icon: Icon(
-                              Icons.help,
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .secondary
-                                  .withValues(alpha: 0.5),
-                            ),
-                            onPressed: () => showDialog(
-                              context: context,
-                              builder: (_) => HomeDialog(),
+                      if (!withoutHelpButton)
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Tooltip(
+                            message:
+                                AppLocalizations.of(context)!.whereAccessInfo,
+                            waitDuration: Duration(milliseconds: 300),
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.help,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .secondary
+                                    .withValues(alpha: 0.5),
+                              ),
+                              onPressed: () => showDialog(
+                                context: context,
+                                builder: (_) => HomeDialog(),
+                              ),
                             ),
                           ),
                         ),
-                      ),
                     ],
                   ),
                   TextField(
