@@ -64,28 +64,34 @@ A biblioteca [flutter_secure_storage](https://github.com/juliansteenbakker/flutt
 
 A análise realizada neste projeto tem como objetivo avaliar e tentar burlar a segurança da biblioteca em todas as suas plataformas (Android, iOS, Linux, macOS, WEB e Windows).
 
-### Web <b>[ Vulnerabilidade Crítica ]</b> :
+### Análise resumida:
 
-A versão web da biblioteca utiliza o Armazenamento Local (Local Storage) do navegador para armazenar a chave de criptografia e os dados criptografados. O Local Storage é uma forma de armazenamento persistente que permite armazenar dados no navegador do usuário. <b><u>Os dados armazenados no Local Storage podem ser ACESSADOS e ALTERADOS através do console do navegador</b></u>, o que torna essa forma de armazenamento vulnerável a ataques de XSS (Cross-Site Scripting).
+- <b>Web - Vulnerabilidade Crítica</b>
 
-Veja abaixo como é simples acessar e editar os dados armazenados no Local Storage:
+### Análise detalhada:
 
-- Acesse o console do navegador (F12 ou Ctrl + Shift + I)
-- Vá para a aba "Aplicativo" (ou Application em inglês)
-- No menu lateral, clique em "Armazenamento Local" (ou Local Storage em inglês)
-- Selecione o domínio do seu projeto (ex: http://localhost:8080)
-- Você verá os dados armazenados no Local Storage, incluindo a <b><u>CHAVE DE CRIPTOGRAFIA e os DADOS CRIPTOGRAFADOS</b></u>
-- Você pode editar ou excluir os dados diretamente do console do navegador
+- ### Web <b>[ Vulnerabilidade Crítica ]</b> :
 
-#### Resultados da análise:
+  A versão web da biblioteca utiliza o Armazenamento Local (Local Storage) do navegador para armazenar a chave de criptografia e os dados criptografados. O Local Storage é uma forma de armazenamento persistente que permite armazenar dados no navegador do usuário. <b><u>Os dados armazenados no Local Storage podem ser ACESSADOS e ALTERADOS através do console do navegador</b></u>, o que torna essa forma de armazenamento vulnerável a ataques de XSS (Cross-Site Scripting).
 
-- O fato dos dados armazenados estarem criprografados não impede que um atacante consiga acessá-los, descriptografá-los e alterá-los, uma vez que a chave de criptografia também está armazenada no Local Storage.
-- No projeto 'analysis_web', é simulado um sistema de login, onde o usuário pode inserir um nome de usuário e uma senha. Após o login, os dados são armazenados no Local Storage usando a biblioteca 'flutter_secure_storage'.
-- Os dados armazenados são exibidos na tela, juntamente com a chave de criptografia, na qual o usuário tem fácil acesso via console do navegador, demonstrando uma vulnerabilidade crítica na segurança dos dados.
-- O projeto também possui um botão para descriptografar os dados armazenados, permitindo que o usuário visualize os dados em texto claro. Isso demonstra que, mesmo que os dados estejam criptografados, eles podem ser facilmente acessados e manipulados por um atacante.
-- Após a descriptografia, o usuário pode editar os dados armazenados, permitindo a alteração de forma lúdica e simples, apenas para demonstração do que poderia ser feito por um atacante.
-- Após a edição dos dados, o usuário pode clicar no botão "SALVAR NO ARMAZENAMENTO LOCAL" para armazenar os dados editados no Local Storage, sobrescrevendo os dados originais. Isso demonstra que um atacante pode facilmente alterar os dados armazenados e salvá-los novamente, comprometendo a segurança do sistema.
+  Veja abaixo como é simples acessar e editar os dados armazenados no Local Storage:
 
-#### Conclusão:
+  - Acesse o console do navegador (F12 ou Ctrl + Shift + I)
+  - Vá para a aba "Aplicativo" (ou Application em inglês)
+  - No menu lateral, clique em "Armazenamento Local" (ou Local Storage em inglês)
+  - Selecione o domínio do seu projeto (ex: http://localhost:8080)
+  - Você verá os dados armazenados no Local Storage, incluindo a <b><u>CHAVE DE CRIPTOGRAFIA e os DADOS CRIPTOGRAFADOS</b></u>
+  - Você pode editar ou excluir os dados diretamente do console do navegador
 
-- <b><u>A VERSÃO WEB DA BIBLIOTECA 'flutter_secure_storage' NÃO É SEGURA</b></u>, pois os dados armazenados no Local Storage podem ser facilmente acessados e manipulados por um atacante. É recomendável não usar essa biblioteca para armazenar dados sensíveis em aplicações web, pois a segurança dos dados não é garantida.
+  #### Resultados da análise:
+
+  - O fato dos dados armazenados estarem criprografados não impede que um atacante consiga acessá-los, descriptografá-los e alterá-los, uma vez que a chave de criptografia também está armazenada no Local Storage.
+  - No projeto 'analysis_web', é simulado um sistema de login, onde o usuário pode inserir um nome de usuário e uma senha. Após o login, os dados são armazenados no Local Storage usando a biblioteca 'flutter_secure_storage'.
+  - Os dados armazenados são exibidos na tela, juntamente com a chave de criptografia, na qual o usuário tem fácil acesso via console do navegador, demonstrando uma vulnerabilidade crítica na segurança dos dados.
+  - O projeto também possui um botão para descriptografar os dados armazenados, permitindo que o usuário visualize os dados em texto claro. Isso demonstra que, mesmo que os dados estejam criptografados, eles podem ser facilmente acessados e manipulados por um atacante.
+  - Após a descriptografia, o usuário pode editar os dados armazenados, permitindo a alteração de forma lúdica e simples, apenas para demonstração do que poderia ser feito por um atacante.
+  - Após a edição dos dados, o usuário pode clicar no botão "SALVAR NO ARMAZENAMENTO LOCAL" para armazenar os dados editados no Local Storage, sobrescrevendo os dados originais. Isso demonstra que um atacante pode facilmente alterar os dados armazenados e salvá-los novamente, comprometendo a segurança do sistema.
+
+  #### Conclusão:
+
+  - <b><u>A VERSÃO WEB DA BIBLIOTECA 'flutter_secure_storage' NÃO É SEGURA</b></u>, pois os dados armazenados no Local Storage podem ser facilmente acessados e manipulados por um atacante. É recomendável não usar essa biblioteca para armazenar dados sensíveis em aplicações web, pois a segurança dos dados não é garantida.
