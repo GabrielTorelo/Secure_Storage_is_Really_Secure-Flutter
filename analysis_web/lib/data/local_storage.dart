@@ -13,4 +13,15 @@ class LocalStorage {
       return defaultValue;
     }
   }
+
+  Future<void> write({
+    required String key,
+    required String value,
+  }) async {
+    try {
+      localStorage.setItem(key, value);
+    } catch (_) {
+      logs.error('Error writing to local storage key: $key');
+    }
+  }
 }
