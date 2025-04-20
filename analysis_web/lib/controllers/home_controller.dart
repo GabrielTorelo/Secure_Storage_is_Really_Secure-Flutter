@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:typed_data';
+import 'package:web/web.dart';
 import 'package:analysis_web/controllers/auth_controller.dart';
 import 'package:cryptography/cryptography.dart';
 import 'package:analysis_web/data/local_storage.dart';
@@ -18,26 +19,78 @@ class HomeController {
       TextEditingController();
   final TextEditingController _newEncryptUserDataController =
       TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
 
   TextEditingController get keyController => _keyController;
   TextEditingController get encryptUserDataController =>
       _encryptUserDataController;
   TextEditingController get decryptUserDataController =>
       _decryptUserDataController;
-  TextEditingController get newCncryptUserDataController =>
+  TextEditingController get newEncryptUserDataController =>
       _newEncryptUserDataController;
+  TextEditingController get nameController => _nameController;
+  TextEditingController get usernameController => _usernameController;
 
   HomeController({
     required this.homeNotifier,
   });
 
-  void encryptUserData() async {
-    _newEncryptUserDataController.text = await _encryptValue() ?? "";
-    homeNotifier.displayNewEncrypted = true;
+  void changeName(String name) {
+    _newEncryptUserDataController.text = _newEncryptUserDataController.text
+        .replaceFirst(RegExp(r'"name":"[^"]*"'), '"name":"$name"');
+  }
+
+  void changeUsername(String username) {
+    _newEncryptUserDataController.text = _newEncryptUserDataController.text
+        .replaceFirst(RegExp(r'"username":"[^"]*"'), '"username":"$username"');
+  }
+
+  void reloadScreen() {
+    window.location.reload();
+  }
+
+  void toggleAdmMode() {
+    if (_newEncryptUserDataController.text.isEmpty) return;
+
+    if (_newEncryptUserDataController.text.contains('"role":"admin"')) {
+      _newEncryptUserDataController.text =
+          _newEncryptUserDataController.text.replaceFirst(
+        '"role":"admin"',
+        '"role":"user"',
+      );
+      return;
+    } else if (_newEncryptUserDataController.text.contains('"role":"user"')) {
+      _newEncryptUserDataController.text =
+          _newEncryptUserDataController.text.replaceFirst(
+        '"role":"user"',
+        '"role":"admin"',
+      );
+      return;
+    } else {
+      _newEncryptUserDataController.text = _newEncryptUserDataController.text
+          .replaceFirst(RegExp(r'"role":"[^"]*"'), '"role":"admin"');
+    }
+  }
+
+  void saveUserDataToLocalStorage() async {
+    await _encryptUserData();
+    await _localStorage.write(
+      key: 'FlutterSecureStorage.userData',
+      value: _newEncryptUserDataController.text,
+    );
+    homeNotifier.savedInLocalStorage = true;
   }
 
   void decryptUserData() async {
     _decryptUserDataController.text = await _decryptValue() ?? "";
+    _newEncryptUserDataController.text = _decryptUserDataController.text;
+
+    final userData = jsonDecode(_decryptUserDataController.text);
+
+    _nameController.text = userData['name'] ?? "";
+    _usernameController.text = userData['username'] ?? "";
+
     homeNotifier.displayDecrypted = true;
   }
 
@@ -54,6 +107,11 @@ class HomeController {
     homeNotifier.displayDecrypted = false;
     decryptUserDataController.clear();
     authController.logout();
+  }
+
+  Future<void> _encryptUserData() async {
+    _newEncryptUserDataController.text = await _encryptValue() ?? "";
+    homeNotifier.displayNewEncrypted = true;
   }
 
   Future<String?> _encryptValue() async {

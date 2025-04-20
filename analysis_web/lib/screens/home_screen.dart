@@ -9,6 +9,7 @@ import 'package:analysis_web/controllers/auth_controller.dart';
 import 'package:analysis_web/controllers/home_controller.dart';
 import 'package:analysis_web/components/dialog/home_dialog.dart';
 import 'package:analysis_web/components/background_gradient.dart';
+import 'package:analysis_web/components/dialog/user_data_edit_dialog.dart';
 import 'package:analysis_web/components/buttons/default_elevated_button.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -103,20 +104,31 @@ class _HomeScreenState extends State<HomeScreen> {
                         controller: _homeController.encryptUserDataController,
                       ),
                       Center(
-                        child: homeNotifier.displayDecrypted
-                            ? _buildTextField(
+                        child: Column(
+                          children: [
+                            if (homeNotifier.displayDecrypted) ...[
+                              _buildTextField(
                                 title: localizations.decryptedUserData,
                                 controller:
                                     _homeController.decryptUserDataController,
-                              )
-                            : Padding(
-                                padding: const EdgeInsets.only(top: 20),
-                                child: DefaultElevatedButton(
-                                  onPressed: () =>
-                                      _homeController.decryptUserData(),
-                                  text: localizations.decrypt,
+                                withoutCopyButton: true,
+                              ),
+                              _buildButton(
+                                text: localizations.edit,
+                                onPressed: () => showDialog(
+                                  context: context,
+                                  builder: (_) => UserDataEditDialog(),
                                 ),
                               ),
+                            ] else ...[
+                              _buildButton(
+                                text: localizations.decrypt,
+                                onPressed: () =>
+                                    _homeController.decryptUserData(),
+                              ),
+                            ],
+                          ],
+                        ),
                       ),
                     ],
                   );
@@ -129,9 +141,23 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  Widget _buildButton({
+    required String text,
+    required VoidCallback onPressed,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 20),
+      child: DefaultElevatedButton(
+        onPressed: onPressed,
+        text: text.toUpperCase(),
+      ),
+    );
+  }
+
   Widget _buildTextField({
     required String title,
     required TextEditingController controller,
+    bool withoutCopyButton = false,
   }) {
     return Div(
       divison: Division(
@@ -194,28 +220,29 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: Tooltip(
-                message: controller.text.isEmpty
-                    ? '${AppLocalizations.of(context)!.copy} ${AppLocalizations.of(context)!.unavailable.toLowerCase()}'
-                    : AppLocalizations.of(context)!.copy,
-                waitDuration: Duration(milliseconds: 300),
-                child: IconButton(
-                  icon: Icon(
-                    Icons.copy,
-                    color: controller.text.isEmpty
-                        ? Theme.of(context).colorScheme.outline
-                        : Theme.of(context).colorScheme.secondary,
+            if (!withoutCopyButton)
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Tooltip(
+                  message: controller.text.isEmpty
+                      ? '${AppLocalizations.of(context)!.copy} ${AppLocalizations.of(context)!.unavailable.toLowerCase()}'
+                      : AppLocalizations.of(context)!.copy,
+                  waitDuration: Duration(milliseconds: 300),
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.copy,
+                      color: controller.text.isEmpty
+                          ? Theme.of(context).colorScheme.outline
+                          : Theme.of(context).colorScheme.secondary,
+                    ),
+                    onPressed: controller.text.isEmpty
+                        ? null
+                        : () => TextHandler.of(context).copyToClipboard(
+                              text: controller.text,
+                            ),
                   ),
-                  onPressed: controller.text.isEmpty
-                      ? null
-                      : () => TextHandler.of(context).copyToClipboard(
-                            text: controller.text,
-                          ),
                 ),
               ),
-            ),
           ],
         ),
       ),
