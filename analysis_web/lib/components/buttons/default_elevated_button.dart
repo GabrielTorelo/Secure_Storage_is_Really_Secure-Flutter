@@ -32,7 +32,11 @@ class DefaultElevatedButton extends StatelessWidget {
         backgroundColor: color ?? Theme.of(context).colorScheme.primary,
         foregroundColor: Colors.white,
       ),
-      child: Text(text ?? AppLocalizations.of(context)!.ok),
+      child: Text(
+        text ?? AppLocalizations.of(context)!.ok,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
     );
   }
 }
