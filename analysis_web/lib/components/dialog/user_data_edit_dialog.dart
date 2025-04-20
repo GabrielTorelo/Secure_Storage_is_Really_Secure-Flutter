@@ -40,9 +40,9 @@ class UserDataEditDialog extends StatelessWidget {
                           maxLength: 15,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Expanded(
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: TextFormField(
                             controller: homeController.usernameController,
                             textAlign: TextAlign.center,
