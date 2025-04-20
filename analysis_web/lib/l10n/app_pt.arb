@@ -1,0 +1,183 @@
+{
+  "@@locale": "pt",
+  "appTitle": "Aplicativo de 'Login'",
+  "@appTitle": {
+    "description": "O título do aplicativo"
+  },
+  "errorOccurred": "Ocorreu um erro",
+  "@errorOccurred": {
+    "description": "Título de erro genérico"
+  },
+  "unknownErrorOccurred": "Ocorreu um erro desconhecido!\nTente novamente mais tarde.",
+  "@unknownErrorOccurred": {
+    "description": "Mensagem de erro genérica"
+  },
+  "errorLogin": "Erro no Login",
+  "@errorLogin": {
+    "description": "Título de erro no login"
+  },
+  "welcome": "Bem-vindo",
+  "@welcome": {
+    "description": "Mensagem de boas-vindas"
+  },
+  "login": "Entrar",
+  "@login": {
+    "description": "Texto de entrar"
+  },
+  "logout": "Sair",
+  "@logout": {
+    "description": "Texto de sair"
+  },
+  "backToHome": "Voltar ao Início",
+  "@backToHome": {
+    "description": "Mensagem para voltar ao inicio"
+  },
+  "ok": "ok",
+  "@ok": {
+    "description": "Texto de ok"
+  },
+  "edit": "Editar",
+  "@edit": {
+    "description": "Texto de editar"
+  },
+  "unavailable": "Indisponível",
+  "@unavailable": {
+    "description": "Texto de indisponível"
+  },
+  "press": "Pressione",
+  "@press": {
+    "description": "Texto de pressione"
+  },
+  "toClose": "para fechar",
+  "@toClose": {
+    "description": "Texto para fechar algo"
+  },
+  "copy": "Copiar",
+  "@copy": {
+    "description": "Texto de copiar"
+  },
+  "saveLocalStorage": "Salvar no Armazenamento Local",
+  "@saveLocalStorage": {
+    "description": "Texto para salvar no LocalStorage"
+  },
+  "reloadScreen": "Recarregar a tela",
+  "@reloadScreen": {
+    "description": "Texto para recarregar a tela"
+  },
+  "keyESC": "[ESC]",
+  "@keyESC": {
+    "description": "Texto da tecla ESC"
+  },
+  "users": "Usuários",
+  "@users": {
+    "description": "Texto de usuários"
+  },
+  "usersAvailable": "Usuários disponíveis para entrar",
+  "@usersAvailable": {
+    "description": "Texto de usuários disponíveis"
+  },
+  "usersAvailableDesc": "Você pode usar os seguintes usuários para entrar:",
+  "@usersAvailableDesc": {
+    "description": "Texto indicando que você pode usar os usuários para fazer login"
+  },
+  "name": "Nome",
+  "@name": {
+    "description": "Texto para se referir ao nome de usuário"
+  },
+  "username": "Usuário",
+  "@username": {
+    "description": "Texto para se referir ao nome de usuário"
+  },
+  "password": "Senha",
+  "@password": {
+    "description": "Texto para se referir à senha do usuário"
+  },
+  "role": "Função",
+  "@role": {
+    "description": "Texto para se referir à função do usuário"
+  },
+  "insertDataAuto": "Inserir dados automaticamente",
+  "@insertDataAuto": {
+    "description": "Texto para inserir dados automaticamente"
+  },
+  "userNotFound": "Usuário não encontrado",
+  "@userNotFound": {
+    "description": "Mensagem de erro quando o usuário não é encontrado"
+  },
+  "incorrectPassword": "Senha incorreta",
+  "@incorrectPassword": {
+    "description": "Mensagem de erro quando a senha está incorreta"
+  },
+  "pleaseEnterUsername": "Por favor, insira um nome de usuário",
+  "@pleaseEnterUsername": {
+    "description": "Mensagem para inserir um nome de usuário"
+  },
+  "pleaseEnterPassword": "Por favor, insira uma senha",
+  "@pleaseEnterPassword": {
+    "description": "Mensagem para inserir uma senha"
+  },
+  "textCopied": "Texto copiado",
+  "@textCopied": {
+    "description": "Mensagem de texto copiado"
+  },
+  "whereAccessInfo": "Onde acessar essa informação?",
+  "@whereAccessInfo": {
+    "description": "Mensagem perguntando onde acessar essa informação"
+  },
+  "encrypt": "Criptografar",
+  "@encrypt": {
+    "description": "Mensagem para criptografar alguma coisa"
+  },
+  "decrypt": "Descriptografar",
+  "@decrypt": {
+    "description": "Mensagem para descriptografar alguma coisa"
+  },
+  "encryptionKey": "Chave de Criptografia",
+  "@encryptionKey": {
+    "description": "Texto do campo que contém a chave de criptografia"
+  },
+  "userData": "Dados do Usuário",
+  "@userData": {
+    "description": "Texto do campo que contém os dados do usuário"
+  },
+  "encryptedUserData": "Dados do Usuário Criptografados",
+  "@encryptedUserData": {
+    "description": "Texto do campo que contém os dados do usuário criptografados"
+  },
+  "decryptedUserData": "Dados do Usuário Descriptografados",
+  "@decryptedUserData": {
+    "description": "Texto do campo que contém os dados do usuário descriptografados"
+  },
+  "savedLocalStorage": "Seus dados foram salvos em 'Armazenamento Local' usando o pacote 'flutter_secure_storage'",
+  "@savedLocalStorage": {
+    "description": "Mensagem para indicar que os dados foram salvos no 'LocalStorage'"
+  },
+  "toTheApp": "ao Aplicativo de 'Login'",
+  "@toTheApp": {
+    "description": "Mensagem se referindo ao aplicativo"
+  },
+  "whereUsersStored": "Onde os usuários são armazenados?",
+  "@whereUsersStored": {
+    "description": "Mensagem perguntando onde os usuários são armazenados"
+  },
+  "whereUsersStoredDesc": "Os usuários são armazenados no arquivo 'users.dart' na pasta 'MOCK'",
+  "@whereUsersStoredDesc": {
+    "description": "Mensagem indicando onde os usuários são armazenados"
+  },
+  "howAccessBrowserLS": "Como posso acessar essas informações através do navegador?",
+  "@howAccessBrowserLS": {
+    "description": "Mensagem perguntando como acessar informações do 'LocalStorage' pelo navegador"
+  },
+  "accessBrowserDevTools": "Você pode acessar essas informações através do 'DevTools' do seu navegador. O exemplo abaixo usa o",
+  "@accessBrowserDevTools": {
+    "description": "Mensagem de como acessar informações do 'LocalStorage' pelo DevTools do navegador"
+  },
+  "homeDialogStepOne": "1º Abra o DevTools (F12) do navegador e vá até a aba 'Aplicativo'.",
+  "@homeDialogStepOne": {
+    "description": "Mensagem do primeiro passo do 'HomeDialog'"
+  },
+  "homeDialogStepTwo": "2º Na seção 'Armazenamento', clique em 'Armazenamento Local' e selecione o site que deseja inspecionar. Você verá as chaves e valores armazenados no 'Armazenamento Local'.",
+  "@homeDialogStepTwo": {
+    "description": "Mensagem do segundo passo do 'HomeDialog'"
+  }
+}

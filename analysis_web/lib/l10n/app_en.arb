@@ -1,0 +1,183 @@
+{
+  "@@locale": "en",
+  "appTitle": "'Login' App",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "errorOccurred": "Error occurred",
+  "@errorOccurred": {
+    "description": "Generic error title"
+  },
+  "unknownErrorOccurred": "An unknown error occurred!\nTry again later.",
+  "@unknownErrorOccurred": {
+    "description": "Generic error message"
+  },
+  "errorLogin": "Login Error",
+  "@errorLogin": {
+    "description": "Login error title"
+  },
+  "welcome": "Welcome",
+  "@welcome": {
+    "description": "Welcome message"
+  },
+  "login": "Login",
+  "@login": {
+    "description": "Login text"
+  },
+  "logout": "Logout",
+  "@logout": {
+    "description": "Logout text"
+  },
+  "backToHome": "Back to Home",
+  "@backToHome": {
+    "description": "Message to return to home"
+  },
+  "ok": "ok",
+  "@ok": {
+    "description": "Ok text"
+  },
+  "edit": "Edit",
+  "@edit": {
+    "description": "Edit text"
+  },
+  "unavailable": "Unavailable",
+  "@unavailable": {
+    "description": "Unavailable text"
+  },
+  "press": "Press",
+  "@press": {
+    "description": "Press text"
+  },
+  "toClose": "to close",
+  "@toClose": {
+    "description": "Text to close something"
+  },
+  "copy": "Copy",
+  "@copy": {
+    "description": "Copy text"
+  },
+  "saveLocalStorage": "Save in Local Storage",
+  "@saveLocalStorage": {
+    "description": "Text to save in 'Local Storage'"
+  },
+  "reloadScreen": "Reload screen",
+  "@reloadScreen": {
+    "description": "Reload screen text"
+  },
+  "keyESC": "[ESC]",
+  "@keyESC": {
+    "description": "Text referring to the ESC key"
+  },
+  "users": "Users",
+  "@users": {
+    "description": "Users text"
+  },
+  "usersAvailable": "Users available for login",
+  "@usersAvailable": {
+    "description": "Users available text"
+  },
+  "usersAvailableDesc": "You can use the following users to login in the application:",
+  "@usersAvailableDesc": {
+    "description": "Text indicating that you can use the users to login"
+  },
+  "name": "Name",
+  "@name": {
+    "description": "Text to refer to the name of the user"
+  },
+  "username": "Username",
+  "@username": {
+    "description": "Text to refer to the username"
+  },
+  "password": "Password",
+  "@password": {
+    "description": "Text to refer to the user password"
+  },
+  "role": "Role",
+  "@role": {
+    "description": "Text to refer to the user role"
+  },
+  "insertDataAuto": "Insert data automatically",
+  "@insertDataAuto": {
+    "description": "Text to insert data automatically"
+  },
+  "userNotFound": "User not found",
+  "@userNotFound": {
+    "description": "Error message when user is not found"
+  },
+  "incorrectPassword": "Incorrect password",
+  "@incorrectPassword": {
+    "description": "Error message when password is incorrect"
+  },
+  "pleaseEnterUsername": "Please enter a username",
+  "@pleaseEnterUsername": {
+    "description": "Message to enter a username"
+  },
+  "pleaseEnterPassword": "Please enter a password",
+  "@pleaseEnterPassword": {
+    "description": "Message to enter a password"
+  },
+  "textCopied": "Text copied",
+  "@textCopied": {
+    "description": "Copied text message"
+  },
+  "whereAccessInfo": "Where to access this information?",
+  "@whereAccessInfo": {
+    "description": "Message asking where to access this information"
+  },
+  "encrypt": "Encrypt",
+  "@encrypt": {
+    "description": "Message to encrypt something"
+  },
+  "decrypt": "Decrypt",
+  "@decrypt": {
+    "description": "Message to decrypt something"
+  },
+  "encryptionKey": "Encryption Key",
+  "@encryptionKey": {
+    "description": "Text of the field containing the encryption key"
+  },
+  "userData": "User Data",
+  "@userData": {
+    "description": "Text of the field containing the user data"
+  },
+  "encryptedUserData": "Encrypted User Data",
+  "@encryptedUserData": {
+    "description": "Text of the field containing the encrypted user data"
+  },
+  "decryptedUserData": "Decrypted User Data",
+  "@decryptedUserData": {
+    "description": "Text of the field containing the decrypted user data"
+  },
+  "savedLocalStorage": "Your data has been saved in 'Local Storage' using the 'flutter_secure_storage' package",
+  "@savedLocalStorage": {
+    "description": "Message to indicate that data has been saved in 'LocalStorage'"
+  },
+  "toTheApp": "to the 'Login' App",
+  "@toTheApp": {
+    "description": "Message referring to the application"
+  },
+  "whereUsersStored": "Where are users stored?",
+  "@whereUsersStored": {
+    "description": "Message asking where the users are stored"
+  },
+  "whereUsersStoredDesc": "The users are stored in the file 'users.dart' in the folder 'MOCK'",
+  "@whereUsersStoredDesc": {
+    "description": "Message indicating where the users are stored"
+  },
+  "howAccessBrowserLS": "How can I access this information through the browser?",
+  "@howAccessBrowserLS": {
+    "description": "Message asking how to access local storage information through the browser"
+  },
+  "accessBrowserDevTools": "You can access this information through your browser 'DevTools'. The example below uses the",
+  "@accessBrowserDevTools": {
+    "description": "Message about how to access local storage information through the browser's DevTools"
+  },
+  "homeDialogStepOne": "1º Open the browser DevTools (F12) and go to the 'Application' tab.",
+  "@homeDialogStepOne": {
+    "description": "'HomeDialog' first step message"
+  },
+  "homeDialogStepTwo": "2º In the 'Storage' section, click on 'Local Storage' and select the site you want to inspect. You will see the keys and values stored in the 'Local Storage'.",
+  "@homeDialogStepTwo": {
+    "description": "Mensagem do segundo passo do 'HomeDialog'"
+  }
+}
