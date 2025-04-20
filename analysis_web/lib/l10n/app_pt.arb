@@ -36,13 +36,37 @@
   "@ok": {
     "description": "Texto de ok"
   },
+  "edit": "Editar",
+  "@edit": {
+    "description": "Texto de editar"
+  },
   "unavailable": "Indisponível",
   "@unavailable": {
     "description": "Texto de indisponível"
   },
+  "press": "Pressione",
+  "@press": {
+    "description": "Texto de pressione"
+  },
+  "toClose": "para fechar",
+  "@toClose": {
+    "description": "Texto para fechar algo"
+  },
   "copy": "Copiar",
   "@copy": {
     "description": "Texto de copiar"
+  },
+  "saveLocalStorage": "Salvar no Armazenamento Local",
+  "@saveLocalStorage": {
+    "description": "Texto para salvar no LocalStorage"
+  },
+  "reloadScreen": "Recarregar a tela",
+  "@reloadScreen": {
+    "description": "Texto para recarregar a tela"
+  },
+  "keyESC": "[ESC]",
+  "@keyESC": {
+    "description": "Texto da tecla ESC"
   },
   "users": "Usuários",
   "@users": {
@@ -100,6 +124,10 @@
   "@whereAccessInfo": {
     "description": "Mensagem perguntando onde acessar essa informação"
   },
+  "encrypt": "Criptografar",
+  "@encrypt": {
+    "description": "Mensagem para criptografar alguma coisa"
+  },
   "decrypt": "Descriptografar",
   "@decrypt": {
     "description": "Mensagem para descriptografar alguma coisa"
@@ -107,6 +135,10 @@
   "encryptionKey": "Chave de Criptografia",
   "@encryptionKey": {
     "description": "Texto do campo que contém a chave de criptografia"
+  },
+  "userData": "Dados do Usuário",
+  "@userData": {
+    "description": "Texto do campo que contém os dados do usuário"
   },
   "encryptedUserData": "Dados do Usuário Criptografados",
   "@encryptedUserData": {

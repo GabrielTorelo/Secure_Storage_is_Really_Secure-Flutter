@@ -36,10 +36,28 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ok => 'ok';
 
   @override
+  String get edit => 'Edit';
+
+  @override
   String get unavailable => 'Unavailable';
 
   @override
+  String get press => 'Press';
+
+  @override
+  String get toClose => 'to close';
+
+  @override
   String get copy => 'Copy';
+
+  @override
+  String get saveLocalStorage => 'Save in Local Storage';
+
+  @override
+  String get reloadScreen => 'Reload screen';
+
+  @override
+  String get keyESC => '[ESC]';
 
   @override
   String get users => 'Users';
@@ -84,10 +102,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get whereAccessInfo => 'Where to access this information?';
 
   @override
+  String get encrypt => 'Encrypt';
+
+  @override
   String get decrypt => 'Decrypt';
 
   @override
   String get encryptionKey => 'Encryption Key';
+
+  @override
+  String get userData => 'User Data';
 
   @override
   String get encryptedUserData => 'Encrypted User Data';

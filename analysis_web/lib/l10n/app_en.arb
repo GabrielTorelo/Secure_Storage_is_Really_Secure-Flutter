@@ -36,13 +36,37 @@
   "@ok": {
     "description": "Ok text"
   },
+  "edit": "Edit",
+  "@edit": {
+    "description": "Edit text"
+  },
   "unavailable": "Unavailable",
   "@unavailable": {
     "description": "Unavailable text"
   },
+  "press": "Press",
+  "@press": {
+    "description": "Press text"
+  },
+  "toClose": "to close",
+  "@toClose": {
+    "description": "Text to close something"
+  },
   "copy": "Copy",
   "@copy": {
     "description": "Copy text"
+  },
+  "saveLocalStorage": "Save in Local Storage",
+  "@saveLocalStorage": {
+    "description": "Text to save in 'Local Storage'"
+  },
+  "reloadScreen": "Reload screen",
+  "@reloadScreen": {
+    "description": "Reload screen text"
+  },
+  "keyESC": "[ESC]",
+  "@keyESC": {
+    "description": "Text referring to the ESC key"
   },
   "users": "Users",
   "@users": {
@@ -100,6 +124,10 @@
   "@whereAccessInfo": {
     "description": "Message asking where to access this information"
   },
+  "encrypt": "Encrypt",
+  "@encrypt": {
+    "description": "Message to encrypt something"
+  },
   "decrypt": "Decrypt",
   "@decrypt": {
     "description": "Message to decrypt something"
@@ -107,6 +135,10 @@
   "encryptionKey": "Encryption Key",
   "@encryptionKey": {
     "description": "Text of the field containing the encryption key"
+  },
+  "userData": "User Data",
+  "@userData": {
+    "description": "Text of the field containing the user data"
   },
   "encryptedUserData": "Encrypted User Data",
   "@encryptedUserData": {

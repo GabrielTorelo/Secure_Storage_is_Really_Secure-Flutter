@@ -149,17 +149,53 @@ abstract class AppLocalizations {
   /// **'ok'**
   String get ok;
 
+  /// Edit text
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
   /// Unavailable text
   ///
   /// In en, this message translates to:
   /// **'Unavailable'**
   String get unavailable;
 
+  /// Press text
+  ///
+  /// In en, this message translates to:
+  /// **'Press'**
+  String get press;
+
+  /// Text to close something
+  ///
+  /// In en, this message translates to:
+  /// **'to close'**
+  String get toClose;
+
   /// Copy text
   ///
   /// In en, this message translates to:
   /// **'Copy'**
   String get copy;
+
+  /// Text to save in 'Local Storage'
+  ///
+  /// In en, this message translates to:
+  /// **'Save in Local Storage'**
+  String get saveLocalStorage;
+
+  /// Reload screen text
+  ///
+  /// In en, this message translates to:
+  /// **'Reload screen'**
+  String get reloadScreen;
+
+  /// Text referring to the ESC key
+  ///
+  /// In en, this message translates to:
+  /// **'[ESC]'**
+  String get keyESC;
 
   /// Users text
   ///
@@ -245,6 +281,12 @@ abstract class AppLocalizations {
   /// **'Where to access this information?'**
   String get whereAccessInfo;
 
+  /// Message to encrypt something
+  ///
+  /// In en, this message translates to:
+  /// **'Encrypt'**
+  String get encrypt;
+
   /// Message to decrypt something
   ///
   /// In en, this message translates to:
@@ -256,6 +298,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Encryption Key'**
   String get encryptionKey;
+
+  /// Text of the field containing the user data
+  ///
+  /// In en, this message translates to:
+  /// **'User Data'**
+  String get userData;
 
   /// Text of the field containing the encrypted user data
   ///
