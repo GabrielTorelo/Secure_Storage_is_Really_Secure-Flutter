@@ -87,6 +87,7 @@ class _MyAppState extends State<MyApp> {
             tertiary: Colors.white,
             onTertiaryFixedVariant: Colors.green,
             outline: Colors.grey,
+            outlineVariant: Colors.purple,
             shadow: Colors.black26,
           ),
           textTheme: theme.textTheme.copyWith(
